@@ -1,0 +1,27 @@
+<p>livre works!</p>
+
+
+
+<div clas="container-fluid ml-5">
+    <div class="row">
+        <div class="col-sm-8 col-md-6 col-lg-4" *ngFor="let l of dataLivres">
+            <div class="card" style="width: 18rem;">
+                <img src="/assets/..." >
+                <div class="card-body">
+                    <h5 class="card-title">{{l.name}}</h5>
+                    <p class="card-text">{{l.dispo}}  </p>
+                    <div class="text-end">
+                        <span class='card-text text-success m-4' data-bs-toggle="offcanvas"
+                            data-bs-target="#modif" >
+                            <i class="fas fa-pen"></i>
+                        </span>
+                        
+                        <span class='card-text text-danger ml-4' >
+                            <i class="fas fa-trash-alt "></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

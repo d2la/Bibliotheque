@@ -1,0 +1,26 @@
+<!-- *************************************************** Barre de navigation ************************************************************************* -->
+<nav class="navbar navbar-expand-sm bg-dark text-white navbar-light stick-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">
+          <span class="logo text-light"><i class="fas fa-book"></i> </span>
+      </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav m-auto">
+          <li class="nav-item ">
+              <a class="nav-link text-white" routerLink="bibliotheque" role="button" >Vos Bibliotheques</a>
+          </li>                                
+          <li class="nav-item ">
+            <a class="nav-link text-white" routerLink="" role="button" >Vos ???</a>
+        </li>        
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <a href="" class="statutsession text-danger"><i class="fas fa-user"></i></a>
+      </ul>
+  </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

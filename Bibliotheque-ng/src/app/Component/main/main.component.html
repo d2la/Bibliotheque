@@ -1,0 +1,132 @@
+<p>main works!</p>
+<div class="container-fluid mx-auto">
+    <button class="mx-auto" type='button' data-bs-toggle="modal" data-bs-target="#biblioModal">
+        <i class="fas fa-plus"></i>
+    </button>
+    <button class="ml-4" type='button' data-bs-toggle="modal" data-bs-target="#biblioSearchModal">
+        <i class="fas fa-search"></i>
+    </button>
+</div>
+<p>
+    <span id="coment" class="text-danger"></span>
+</p>
+
+
+<div clas="container-fluid ml-5">
+    <div class="row">
+        <div class="col-sm-8 col-md-6 col-lg-4" *ngFor="let b of dataBibliotheque">
+            <div class="card" style="width: 18rem;">
+                <img src="/assets/{{b.photo}}" class={{b.photo}}>
+                <div class="card-body">
+                    <h5 class="card-title">{{b.name}}</h5>
+                    <p class="card-text">Nb d'adhérents: {{b.adherent}}</p>
+                    <p class="card-text">{{b.description |slice:0:100}}... </p>
+                    <div class="text-end">
+                        <span class='card-text text-success m-4' data-bs-toggle="offcanvas"
+                            data-bs-target="#modif" (click)="editBibliotheque(b)">
+                            <i class="fas fa-pen"></i>
+                        </span>
+                        
+                        <span class='card-text text-danger ml-4' (click)="supBibliotheque(b)">
+                            <i class="fas fa-trash-alt "></i>
+                        </span>
+
+                        <span class='card-text text-success ml-4' >
+                            <a  role="button" routerLink="../livre" (click)="comWatchLivre(b.id)"><i class="fas fa-search"></i></a>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ********************************************** Formulaire modification ********************************** -->
+
+<div class="offcanvas offcanvas-end" id="modif">
+    <h4 class='text-center mt-4'>Modifier cet bibliothèque</h4>
+    <form (ngSubmit)='modifBibliotheque()' #bupdateForm='ngForm' class="offcanvas-body">
+        <div class="mb-3">
+            <label for="name" class="form-label fst-italic fw-light">Nommez votre bibliotheque</label>
+            <input [(ngModel)]="bibliothequeSingle.name"  type="text" name='name' ngModel class="form-control" id='namModif'>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label fst-italic fw-light">Description</label>
+            <input [(ngModel)]="bibliothequeSingle.description" type="text" name='description' ngModel class="form-control" id='descriModif'>
+        </div>
+        <div class="mb-3">
+            <label for="photo" class="form-label fst-italic fw-light">Choisissez vos Photos</label>
+            <input [(ngModel)]="bibliothequeSingle.photo" type="file" name='photo' class="form-control form-control-lg align-self-center">
+        </div>
+
+        <div class='d-grid gap-2 col-6 mx-auto mt-4'>
+            <button class='btn btn-secondary ' type='submit'>Modifer</button>
+        </div>
+    </form>
+</div>
+
+<!-- ********************************************** Formulaire ajout ********************************** -->
+
+<div class="modal fade" id="biblioModal" tabindex="-1" aria-labelledby="biblioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content container-fluid">
+            <form (ngSubmit)="addBibliotheque(addBiblioForm)" #addBiblioForm='ngForm' >
+                <div class='mb3'>
+                    <label for="name" class="form-label fst-italic fw-light">Nommez votre bibliotheque</label>
+                    <input ngModel  type="text" name='name' class="form-control" id='namModif'>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label fst-italic fw-light">Description</label>
+                    <input ngModel type="text" name='description' class="form-control" id='descriModif'>
+                </div>
+                <div class="mb-3">
+                    <label for="photo" class="form-label fst-italic fw-light">Choisissez vos Photos</label>
+                    <input ngModel type="file" name='photo' class="form-control form-control-lg align-self-center">
+                </div>
+                <div class='d-grid gap-2 col-6 mx-auto mt-4'>
+                    <button class='btn btn-primary ' type='submit' data-bs-dismiss="modal" aria-label="Close">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ********************************************** Formulaire search ********************************** -->
+<div class="modal fade" id="biblioSearchModal" tabindex="-1" aria-labelledby="biblioSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content container-fluid">
+             <form (ngSubmit)="searchBibliotheque(searchForm)" #searchForm='ngForm' > 
+                <div class='mb3'>
+                    <label for="searchMethod" class="form-label fst-italic fw-light">Selectionnez votre sujet de recherche</label>
+                    <select ngModel (change)="change($event)" id="searchMethod" name="searchMethod" class="form-select" aria-label="Default select example">
+                        <option value="" selected>Champ de recherche</option>
+                        <option value="id">id</option>
+                        <option value="name">name</option>
+                        <option value="description">description</option>
+                        <option value="adherent">adhérent</option>
+                      </select>
+                    
+                      <!--  -->
+                    
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="keyword" class="form-label fst-italic fw-light">keyword</label>
+                    <input ngModel type="text" name='keyword' class="form-control" id='keyword'>
+                </div>
+                <div class="mb-3 "[ngClass]="(l == 'adherent')?'d-block':'d-none'" >
+                    <label for="keyword2" class="form-label fst-italic fw-light">keyword2</label>
+                    <input ngModel type="text" name='keyword2' class="form-control" id='keyword2'>
+                </div>
+                <div class='d-grid gap-2 col-6 mx-auto mt-4'>
+                    <span></span>
+                    <button class='btn btn-primary ' type='submit' data-bs-dismiss="modal" aria-label="Close">Rechercher</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
