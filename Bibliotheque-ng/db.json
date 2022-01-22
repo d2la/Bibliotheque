@@ -1,0 +1,25 @@
+{
+    "user": [{
+        "id": 1,
+        "name": "lolo",
+        "password": "petitebite",
+        "role": ["user", "admin"]
+    },
+    {    "id": 2,
+        "name": "lolo",
+        "password": "1",
+        "role": ["user", "admin"]
+    },
+    {
+        "id": 3,
+        "name": "blakos",
+        "password": "grossebite",
+        "role": ["user", "admin"]
+    },
+    {
+        "id": 4,
+        "name": "jaouad",
+        "password": "onlacherchetoujours",
+        "role": ["user"]
+    }]
+}

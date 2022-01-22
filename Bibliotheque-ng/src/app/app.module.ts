@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { MainComponent } from './Component/main/main.component';
 import { FormsModule } from '@angular/forms';
 import { LivreComponent } from './Component/livre/livre.component';
+import { ConnexionComponent } from './Component/connexion/connexion.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LivreComponent } from './Component/livre/livre.component';
     AppComponent,
     HomeComponent,
     MainComponent,
-    LivreComponent
+    LivreComponent,
+    ConnexionComponent
     
   ],
   imports: [

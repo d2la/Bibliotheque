@@ -16,11 +16,27 @@
             <a class="nav-link text-white" routerLink="" role="button" >Vos ???</a>
         </li>        
       </ul>
-      <ul class="navbar-nav mr-auto">
-        <a href="" class="statutsession text-danger"><i class="fas fa-user"></i></a>
+      <ul class="navbar-nav mr-auto" >
+        <a href="" class="statutsession " type='button' data-bs-toggle="modal" data-bs-target="#userModal" [ngClass]="(session)?'fas fa-user text-success':'fas fa-user text-danger'"></a>
+        <span> {{session.name}}</span>
       </ul>
   </div>
   </div>
 </nav>
+
+
+
+<!-- ******************************************************* Modal User************************************************** -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content container-fluid">
+          
+        <div class='d-grid gap-2 col-6 mx-auto mt-4'>
+            <button type='submit' data-bs-dismiss="modal" aria-label="Close" (click)=deleteSession()>Se Déconnecter</button>
+        </div>
+          
+      </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
