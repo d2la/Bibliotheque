@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 export class ConnexionComponent implements OnInit {
   userTab:any
  
-  constructor(private authentitificationService: AuthentificationService) { }
+  constructor(private authentitificationService: AuthentificationService, private router:Router) { }
+  
 
   ngOnInit(): void {
   }
@@ -58,10 +60,8 @@ export class ConnexionComponent implements OnInit {
         alert("password erronné")
       }else{
         sessionStorage.setItem('login',JSON.stringify(this.userTab)) //pour envoyer un objet dans localsotorage ou sessionstorage il faut le strignifier
-       
-       
-          location.reload();
-        
+       // this.router.navigate(['/', 'bibliotheque'])  //autre methode pour changer url mais pas de rafraichissement pas
+        location.replace('/bibliotheque') ;   //change url avec rafraichissement page      
       }
     })
  
